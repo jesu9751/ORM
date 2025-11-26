@@ -20,26 +20,29 @@ Execute Django admin and create details for 10 cars
 ```
 admin.py
 
-from django.contrib import admin 
-from.models import Loan
-class LoanAdmin(admin.ModelAdmin):
-    pass
-admin.site.register(Loan,LoanAdmin)
+from django.contrib import admin
+from .models import car,carAdmin
+
+
+admin.site.register(car,carAdmin)
+
+
 
 models.py
 
 from django.db import models
 from django.contrib import admin
- 
-class Loan(models.Model):
- Name=models.CharField(max_length=10)
- Accountno=models.IntegerField(primary_key="Refno")
- Address=models.CharField(max_length=30)
- Aadharno=models.IntegerField()
- Email=models.EmailField()
 
- class LoanAdmin(admin.ModelAdmin):
-  list_display=('Name','Accountno','Address','Aadharno','Email')
+class car(models.Model):
+    Company=models.CharField(max_length=20)
+    Model=models.CharField(max_length=20)
+    Colour=models.CharField(max_length=20)
+    Price=models.IntegerField()
+    DOM=models.DateField()
+
+class carAdmin(admin.ModelAdmin):
+    list_display=['Company','Model','Colour','Price','DOM']
+
 ```
 # OUTPUT
 
